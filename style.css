@@ -1,0 +1,50 @@
+.e1{
+    columns: 2;
+}
+.e2{
+    columns: 1;
+    list-style: none;
+}
+.d{
+    color: red;
+}
+#precedencia{
+    list-style: decimal;
+}
+.blocotest{
+    margin-top: 20px;
+    font: normal;
+    background: red;
+    color: white;
+    width: 200px;
+    height: 200px;
+    line-height: 200px;
+    text-align: center;
+}
+html{
+    background-color: lightsteelblue;
+    margin: 10px;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    background-color: whitesmoke;
+    max-width: 1000px;
+    padding: 10px;
+    border-radius: 6px;
+    margin: auto;
+}
+h2{
+    font-size: 23px;
+}
+code{
+    word-wrap:break-word;
+    white-space: pre-wrap;
+    background-color: lightblue;
+    display: block;
+    border-radius: 10px;
+}
+h3{
+    text-decoration: none;
+    font-size: 16px;
+}
