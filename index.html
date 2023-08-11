@@ -9,9 +9,23 @@
 </head>
 <body>
     <h1>Manipulação de Strings em PHP</h1>
-    <p>Em PHP, há 4 formatos de strings, sendo eles <strong>Double quoted</strong>,<strong>Single quoted</strong>, <strong>Heredoc</strong>, <strong>Nowdoc</strong>. Deve-se lembrar que em PHP, existe uma diferença entre stringo de aspas duplas (Double quoted) e aspas simples (Single quoted) </p>
-    <p>A diferença entre a <strong>Double Quoted</strong> e a <strong>Single Quoted</strong> é a interpretação que o PHP fará, ou seja, existe uma interpretação de conteúdo </p>
-    <p>Pra concatenarmos uma string com outra, utilizamos "." ao invés de "+", como nas outras linguagens.</p>
+    <p>Em PHP, há 4 formatos de strings, sendo eles <strong>Double quoted</strong>,<strong>Single quoted</strong>, <strong>Heredoc</strong>, <strong>Nowdoc</strong>. Deve-se lembrar que em PHP, existe uma diferença entre string de aspas duplas (Double quoted) e aspas simples (Single quoted). Também devemos lembrar que em PHP para concatenarmos uma string com outra, utilizamos "." ao invés de "+", como nas outras linguagens.</p>
+    <p>A diferença entre a <strong>Double Quoted</strong> e a <strong>Single Quoted</strong> é a interpretação que o PHP fará, ou seja, existe uma interpretação de conteúdo. Logo, quando utilizamos Double quoted, dizemos ao php "interprete a frase". Já em Single quoted, dizemos ao PHP "escreva a frase do jeito que está vendo".</p>
+    <ul>
+        <li>Exemplo de <strong>Double quoted</strong>: "PHP\u{1f418}" ==> PHP🐘.</li>
+        <li>Utilizando o <strong>Single quoted</strong>: 'PHP\u{1f418}' ==> PHP\u{1f418}</li>
+    </ul>
+    <p>Agora, caso desejarmos utilizar uma <strong>constante</strong>, não podemos usar os métodos de Quoted. Para isso é bem simples, basta utilizarmos a <strong>CONCATENAÇÃO</strong> que, em PHP, é dada por um "." (ponto)</p>
+   <p>Neste caso, não há diferença entre usar "" ou '' </p>    
+    <code>
+        <span>const ESTADO = "RJ";</span>
+        <span></span>
+        <span>Jeito errado:</span>
+        <span>echo "Moro no ESTADO"; ==> Moro no ESTADO</span>
+        <span>Jeito certo:</span>
+        <span>echo "Moro no " . ESTADO; ==> Moro no RJ</span>
+    </code>
+ 
 
     <h1>Obtendo Dados de Formulários </h1>
     <p>No PHP, quem estará processando os dados, será o servidor. Por isso, diferente de JS, há algumas infromações que o formulário não poderá ser esquecido. Dentre essas infromações, as que não poderá ser esquecida são os métodos (<strong>method)</strong> e as ações(<strong>action</strong>)</p>
