@@ -9,7 +9,8 @@
 </head>
 <body>
     <h1>Manipulação de Strings em PHP</h1>
-    <p>Em PHP, há 4 formatos de strings, sendo eles <strong>Double quoted</strong>,<strong>Single quoted</strong>, <strong>Heredoc</strong>, <strong>Nowdoc</strong>. Deve-se lembrar que em PHP, existe uma diferença entre string de aspas duplas (Double quoted) e aspas simples (Single quoted). Também devemos lembrar que em PHP para concatenarmos uma string com outra, utilizamos "." ao invés de "+", como nas outras linguagens.</p>
+    <p>Em PHP, há 4 formatos de strings, sendo eles <strong>Double quoted</strong>,<strong>Single quoted</strong>, <strong>Heredoc</strong>, <strong>Nowdoc</strong>. Deve-se lembrar que em PHP existe uma diferença entre string de aspas duplas (Double quoted) e aspas simples (Single quoted). Também devemos lembrar que em PHP, para concatenarmos uma string com outra, utilizamos "." ao invés de "+", como nas outras linguagens.</p>
+    <h2><strong>Double Quoted e Single Quoted</strong></h2>
     <p>A diferença entre a <strong>Double Quoted</strong> e a <strong>Single Quoted</strong> é a interpretação que o PHP fará, ou seja, existe uma interpretação de conteúdo. Logo, quando utilizamos Double quoted, dizemos ao php "interprete a frase". Já em Single quoted, dizemos ao PHP "escreva a frase do jeito que está vendo".</p>
     <ul>
         <li>Exemplo de <strong>Double quoted</strong>: "PHP\u{1f418}" ==> PHP🐘.</li>
@@ -25,7 +26,29 @@
         <span>Jeito certo:</span>
         <span>echo "Moro no " . ESTADO; ==> Moro no RJ</span>
     </code>
- 
+    <p>E se caso quisermos acrescentar "" ou '' no texto sem que ocorra essas interpretações pelo PHP ? Nestes casos utilizamos as "<strong>Sequência de Escape</strong>" que, neste caso (pois há vários outros tipos de sequencia de escape), é representada por <strong>\</strong>. Com ela, dizemos ao PHP para que mostre o símbolo de "".</p>
+    <p>Como dito anteriormente, há vários outros tipos de sequência de escape, como alguns sendo:</p>
+    <ul>
+        <li>\n => Nova linha, ou seja, quebra a linha para baixo</li>
+        <li>\t => Tabulação horizontal, ou seja, irá criar um espaço no texto</li>
+        <li>\\ => Barra invertida, ou seja, irá mostrar a \ no texto</li>
+        <li>\$ => Sinal de cifrão, ou seja, irá mostrar o $ no texto</li>
+        <li>\u{} => Codepoint Unicode, ou seja, irá mostrar o unicode no texto</li>
+    </ul>
+    <h2><strong>Sintaxe Heredoc</strong></h2>
+    <p>Este método é muito pouco utilizado. Ele consiste em criar um campo em que tudo que seja escrito dentro dele, seja apresentado da forma correta. Ou seja, se quebrarmos linha e inserirmos $, irá aparecer a linha quebrada e o a constância de $.</p>
+    <p>Para utilizarmos esta sintaxe, basta utilizarmos <strong>&lt&lt&lt FRASE</strong>e no final de tudo <strong>FRASE;</strong>. É muito importante ser em maísculo e estar separado dos &lt&lt&lt</p>
+    <code>
+        <span>$curso = "php";</span>
+        <span>$ano = date('y');</span>
+        <span>echo&lt&lt&lt VIOLAO</span>
+        <span>Estou estudando</span>
+        <span> $curso em $ano</span>
+        <span>VIOLAO;</span>
+        <span></span>
+        <span>Estou estudando</span>
+        <span> php em 2023</span>
+    </code>
 
     <h1>Obtendo Dados de Formulários </h1>
     <p>No PHP, quem estará processando os dados, será o servidor. Por isso, diferente de JS, há algumas infromações que o formulário não poderá ser esquecido. Dentre essas infromações, as que não poderá ser esquecida são os métodos (<strong>method)</strong> e as ações(<strong>action</strong>)</p>
