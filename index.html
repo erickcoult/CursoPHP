@@ -50,6 +50,20 @@
         <span> php em 2023</span>
     </code>
 
+    <h2>Sintaxe Nowdoc</h2>
+    <p>Esta sintaxe é semelhante à Heredoc, entretanto, na Now doc, se ocorre o oposto. Ou seja, o PHP não interpretará o texto. Agora, para utilizarmos ele, apenas devemos inserir '' após echo</p>
+    <code>
+        <span>$curso = "php";</span>
+        <span>$ano = date('y');</span>
+        <span>echo&lt&lt&lt 'VIOLAO'</span>
+        <span>Estou estudando</span>
+        <span> $curso em $ano</span>
+        <span>VIOLAO;</span>
+        <span></span>
+        <span>Estou estudando</span>
+        <span> $curso em $ano</span>
+    </code>
+
     <h1>Obtendo Dados de Formulários </h1>
     <p>No PHP, quem estará processando os dados, será o servidor. Por isso, diferente de JS, há algumas infromações que o formulário não poderá ser esquecido. Dentre essas infromações, as que não poderá ser esquecida são os métodos (<strong>method)</strong> e as ações(<strong>action</strong>)</p>
     <p>Os <strong>method</strong> nada mais são do que o método em que os dados serão codificados para serem enviados ao servidor. Por exemplo, o método <strong>get</strong> ou <strong>post</strong></p>
