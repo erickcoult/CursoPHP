@@ -67,13 +67,32 @@
     <h1>Obtendo Dados de Formulários </h1>
     <h3>Exercício PHP- 1</h3>
     <p>No PHP, quem estará processando os dados, será o servidor. Por isso, diferente de JS, há algumas infromações que o formulário não poderá ser esquecido. Dentre essas infromações, as que não poderá ser esquecida são os métodos (<strong>method)</strong> e as ações(<strong>action</strong>)</p>
-    <p>Os <strong>method</strong> nada mais são do que o método em que os dados serão codificados para serem enviados ao servidor. Por exemplo, o método <strong>get</strong> ou <strong>post</strong></p>, onde
+    <p>Os <strong>method</strong> nada mais são do que o método em que os dados serão codificados para serem enviados ao servidor. Por exemplo, o método <strong>get</strong> ou <strong>post</strong>, onde</p>
     <ul>
-        <li>GET- é usado quando o cliente deseja obter recursos do servidor.</li>
-        <li>POST-é usado quando o cliente deseja enviar dados para processamento ao servidor, como os dados de um formulário, por exemplo.</li>
+        <li>GET - é usado quando o cliente deseja obter recursos do servidor.</li>
+        <li>POST- é usado quando o cliente deseja enviar dados para processamento ao servidor, como os dados de um formulário, por exemplo.</li>
+    </ul>
+    <p>Devemos lembrar que em PHP há diversas <strong>super globais</strong> e que devemos utilizar os mesmos method para as mesmas super globais. As mais utilizadas são:</p>
+      <ul>
+        <li><strong>`$_GET`</strong>: Contém dados enviados para o servidor via solicitações GET, útil para recuperar parâmetros da URL.</li>
+        <li><strong>`$_POST`</strong>: Mantém dados enviados via solicitações POST, comum em formulários HTML para capturar informações do usuário.</li>
+        <li><strong>`$_COOKIE`</strong>: Armazena valores de cookies do navegador, permitindo lembrar informações entre solicitações HTTP.</li>
+        <strong>
+        <li>`$_REQUEST`</strong>: Combinando $_GET, $_POST e $_COOKIE, acessa dados de diversas fontes; use com cautela por segurança.</li>  
     </ul>
     <p>Já os <strong>action</strong> será para onde serão enviados os dados do formulário. Por exemplo, para um arquivo formulario<strong>.php</strong></p>
     <p>Para criarmos um formulário que obtenha nome e sobrenome do cliente, precisamos seguir um passo a passo.</p> 
     <p>Primeiro criamos um <strong>Form</strong> com destino em ".php". Ainda dentro do form, criamos dois <strong>label</strong> (nome e sobrenome) e dois <strong>input text</strong> (adicionamos um id para criar um costume para quando utilizar JavaScript). Após isso, criamos um <strong>input submit</strong> como botão de enviar. </p>
+    <p><strong>Entretanto</strong>, ao clicarmos em "enviar", seremos direcionados para o arquivo php que criamos anteriormente (cad.php), porém sem os dados do cliente. Agora que entra a parte em que mexemos no arquivo php</p>
+    <p>Já no arquivo PHP, devemos "<strong>puxar</strong>" os dados das caixas de textos que criamos no html, assim como fazemos em JavaScript. Ou seja, vamos criar uma variável que receberá uma <strong>Super global</strong> (a mesma que inserimos em <strong>method</strong>) que conterá o nome que inserimos no "<strong>name</strong>". Por fim, printaremos na tela, ficando deste jeito: </p>
+    <code>
+        <span>&lt?php</span>
+        <span>$n = $_GET["nome"]</span>
+        <span>$s = $_GET["sobrenome"]</span>
+        <span>echo "&ltp> É um prazer te conhcer, $n $s! este é o meu site &ltp>&l"</span>
+        <span>?></span>
+        <span>&lta href="javascript:history.go(-1)"> Voltar para página anterior &lt/a></span>
+    </code>
+    <p>Para ficar mais dinâmico, adicionamos <strong>JavaScript</strong> para que haja a opção de voltar a tela anterior.
 </body>
 </html>
