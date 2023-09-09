@@ -122,5 +122,22 @@
         <span>min (5, 2) => 2</span>
         <span>sqrt(81) => 9</span>
     </code>
+
+    <h1>Conversor de Moeda Simples</h1>
+    <p>Primeiro devemos criar a base do conversor. Para isso, vamos primeiro criar as variáveis <strong>dolar</strong>(onde iremos pôr a cotação <strong>fixa</strong> de hoje) e a real (onde iremos pôr o valor que desejamos converter para o dolar).</p>
+    <p>Em seguida, iremos utilizar uma <strong>biblioteca internacionalizada</strong> para que a formatação seja do país que inserirmos. Para isso, vamos criar uma variável que receberá a função <strong>numfmt_create(''pt_BR'', NumberFormatter::CURRENCY)</strong>. Ou seja, tudo que usarmos a variável que recebeu esta função, receberá um número apresentado no idiota do Brasil, já que, por exemplo, nos EUA eles utilizam o . cara casas decimais e a , para valores acima de 1.000. Contudo, está função fará essa conversão para o idioma selecionado, já que <strong>CURRENCY</strong> signifca moeda.</p>
+    <p>Por último, iremos dar um <strong>echo</strong> com a função <strong>numfmt_format_currency(variável 1, variável 2, ''moeda'') concatenado com outra função semelhante, porém na moeda que queremos convertida. Ficaremos com o código assim</strong></p>
+    <code>
+        <span>$cotação = 5.59</span>
+        <span>$real = 1000</span>
+        <span>$dolar = $real / $cotação</span>
+        <span></span>
+        <span>$padrão = numfmt_create(''pt_BR'', NumberFormatter::CURRENCY);</span>
+        <span></span>
+        <span>echo "Seus " . numfmt_format_currency($padrão, $real, "BRL") . "equivalem a " . numfmt_format_currency($padrão, $dolar, "USD")</span>
+        <span>---------------</span>
+        <span>Seus R$1.000,00 equivalem a U$193,42</span>
+    </code>
+    <p>Em resumo, o programa irá pegar o $real e dividir pela $cotação para se obter o $dolar. Com isso, faremos uma variávem $padrão para receber a funão em que converta a 'nacionalidade' para a moeda local, respeitando a ortografia do país selecionado. Por fim, o programa printará o formato da moeda com base no $padrão, no $real e na moeda 'BRL para o formato desejado que seria $padrão, $dolar e a moeda local de lá 'USD'.</p>
 </body>
 </html>
