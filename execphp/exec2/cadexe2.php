@@ -8,13 +8,14 @@
 <body>
     <main>
        <?php  
-        $cotação = 5.17;
-        $real = 1000;
-        $dolar = $real / $cotação;
-        
-        echo "Seus" . numfmt_format_currency($padrão, $real, "BRL") . "equivalem a " . numfmt_format_currency($padrão, $dolar, "USD");
+        $cotacao = 5.17;
+        $real = $_REQUEST["din"] ?? 0;
+        $dolar = $real / $cotacao;
+        $fmt = numfmt_create('pt_BR', NumberFormatter::CURRENCY);
+
+        echo "Seus " . numfmt_format_currency($fmt, $real, "BRL") . " equivalem a " . numfmt_format_currency($fmt, $dolar, "USD");
         ?>
     </main>
 </body>
-</html>
+       
 
