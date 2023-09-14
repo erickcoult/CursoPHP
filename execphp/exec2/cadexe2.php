@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conversor de Moeda </title>
+    <link rel="stylesheet" href="phpcss.css">
 </head>
 <body>
     <main>
@@ -15,6 +16,7 @@
 
         echo "Seus " . numfmt_format_currency($fmt, $real, "BRL") . " equivalem a " . numfmt_format_currency($fmt, $dolar, "USD");
         ?>
+        <button onclick="javascript:history.go(-1)">Voltar</button>
     </main>
 </body>
        
