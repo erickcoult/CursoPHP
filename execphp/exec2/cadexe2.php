@@ -14,7 +14,8 @@
         $dolar = $real / $cotacao;
         $fmt = numfmt_create('pt_BR', NumberFormatter::CURRENCY);
 
-        echo "Seus " . numfmt_format_currency($fmt, $real, "BRL") . " equivalem a " . numfmt_format_currency($fmt, $dolar, "USD");
+        echo "Seus " . numfmt_format_currency($fmt, $real, "BRL") . " equivalem a <strong>" . numfmt_format_currency($fmt, $dolar, "USD") . "</strong><br>";
+        echo "Cotação do dolar: <strong>R$5,17</strong>"
         ?>
         <button onclick="javascript:history.go(-1)">Voltar</button>
     </main>
