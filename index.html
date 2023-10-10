@@ -139,5 +139,22 @@
         <span>Seus R$1.000,00 equivalem a U$193,42</span>
     </code>
     <p>Em resumo, o programa irá pegar o $real e dividir pela $cotação para se obter o $dolar. Com isso, faremos uma variávem $padrão para receber a funão em que converta a 'nacionalidade' para a moeda local, respeitando a ortografia do país selecionado. Por fim, o programa printará o formato da moeda com base no $padrão, no $real e na moeda 'BRL para o formato desejado que seria $padrão, $dolar e a moeda local de lá 'USD'.</p>
+
+    <h1>Conversor de Moedas Avançados</h1>
+    <P>Diferente do Conversor simples, este aqui consegue pegar a cotação atual do dolar, direto do site do Banco Central do Brasil. Com isso, não há a necessidade de fazer alterações manuais</P>
+    <p>Para fazermos precisamos pegar a API direto do site do BCB. Logo após, inserimos o que desejamos da API e exportamos a URL em json. Por fim, criamos duas variáveis, sendo uma para a URL que criamos e outra para os dados que a URL nos dará.</p>
+    <p>A segunda variável deverá receber o código '<strong>json_decode(file_get_contents($url), true);</strong>'. Isso fará com que o a variável em PHP seja convertida em JSON.</p>
+    <p>Por fim, criamos uma última variável para que possamos trazer os dados gerados pela URL para a tela. A sequencia seria <strong>$dados["value"]["0"]["cotacaoCompra"]</strong>. Entretanto, para que funcione no dia atual ,precisamos criar outras duas variáveis para que seja o <strong>início</strong> e o <strong>fim</strong> dos dias que iremos fazer a cotação. </p>
+    <code>
+        <span>php</span>
+        <span>$inicio = date("m-d-Y". strtotime("-7 days"))</span>
+        <span>$fim = date("d-m-Y")</span>
+        <span>$url= https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarPeriodo(dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)?@dataInicial=<strong>\''. $inicio .'\'</strong>&@dataFinalCotacao=<strong>\''. $final .'\'</strong>&$top=1&$orderby=dataHoraCotacao%20desc&$format=json&$select=cotacaoCompra,dataHoraCotacao</span>
+        <span></span>
+        <span></span>
+        <span>$dados = json_decode(file_get_contents($url), true);</span>
+        <span>$cotação = $dados["value"]["0"]["cotacaoCompra"];</span>
+        <p>echo "A cotação foi $cotação</p>
+    </code>
 </body>
 </html>
