@@ -19,9 +19,10 @@
         $real = $_REQUEST["din"] ?? 0;
         $dolar = $real / $cotação;
         $fmt = numfmt_create('pt_BR', NumberFormatter::CURRENCY);
+        $cotacaoFormatada = number_format($dados["value"][0]["cotacaoCompra"], 2, ',', '.');
 
         echo "Seus " . numfmt_format_currency($fmt, $real, "BRL") . " equivalem a <strong>" . numfmt_format_currency($fmt, $dolar, "USD") . "</strong><br>";
-        echo "Cotação do dólar:$" . $dados["value"][0]["cotacaoCompra"];
+        echo "Cotação do dólar: R$" . $cotacaoFormatada;
         ?>
         <button onclick="javascript:history.go(-1)">Voltar</button>
     </main>
