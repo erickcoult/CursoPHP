@@ -159,5 +159,34 @@
 
     <h1>Retro alimentação em PHP</h1>
     <p>Nos exemplos anteriores tinhamos um problema de que, ao preenchermos um formulário e enviar, eramos direcionados para outra página em PHP. Ou seja, haverá um arquivo em HTML e outo em PHP. Na retro alimentação, utilizamos apenas um arquivo em PHP, onde ao respondermos um forumulário, o resultado será enviado para o próprio arquivo e o exibirá na mesma página.</p>
+    <p>Para isso, devemos criar um <strong>form</strong> com um <strong>action</strong> que receberá uma <strong>short tag</strong> de echo. Logo após, inserimos uma variável <strong>SERVER</strong> que receberá o comando <strong>PHP_SELF</strong></p>
+    <p>Por fim desta etapa, criamos 2 label e 2 input do tipo <strong>number</strong> para inserirmos os valores. Também adicioanmos a tag <strong>value</strong> que receberá $valor1 e a outra $valor2. Assim, fazemos um input do tipo <strong>submit</strong> para somar os valores.</p>
+    <p>Agora que criamos os formulário, devemos fazer a parte para capturar os dados. Para isso, devemos (dentro de um comando php), criar as duas variáveis que inserimos lá em cima ($valor1 e $valor2) que receberão as <strong>super globais</strong> $_GET e o valor do input</p>
+    <p>Teremos esse código</p>
+    <code>
+        <span>&lt?php</span>
+        <span>$valor1 = $GET['v1'] ?? 0;</span>
+        <span>$valor1 = $GET['v2'] ?? 0;</span>
+        <span>?></span>
+        <span></span>
+        <span>&ltmain></span>
+        <span>Somador de Valores</span>
+        <span>&ltform action="&lt=$_SEVER['PHP_SELF']?>" method="get"></span>
+         <span>&ltlabel for="v1">Valor 1&lt/label></span>
+         <span>&ltinput type="number" name="v1" id="v1" value="&lt?=$valor1?>"></span>
+         <span>&ltlabel for="v2">Valor 2&lt/label></span>
+         <span>&ltinput type="number" name="v2" id="v2" value="&lt?=$valor2?>"></span>
+         <span>&ltinput type="submit" value="somar"></span>
+        <span>&lt/main></span>
+    </code>
+    <p>E agora, para finalizar, criamos o resutado em outra section (super importante) e com outro código em php</p>
+    <code>
+        <span>&ltsection id="resultado"></span>
+        <span>&lt?php</span>
+        <span>$soma = $valor1 + $valor2;</span>
+        <span>print "&ltp>A soma entre os valores  $valor1 e $valor2 é $soma&lt/p>";</span>
+        <span>?></span>
+        <span>&lt/section></span>
+    </code>
 </body>
 </html>
