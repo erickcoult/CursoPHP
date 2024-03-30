@@ -188,5 +188,36 @@
         <span>?></span>
         <span>&lt/section></span>
     </code>
+
+    <h1>Criar conexão com banco de dados</h1>
+    <p>Criar a conexão do PHP com banco de dados é relativamente simples. Primeiro devemos criar as variáveis na <strong>ordem correta</strong>, sendo, nesta ordem: </p>
+    <ul>
+        <li>$host -> Endereço do banco de dados</li>
+        <li>$usuário -> Nome do usuário do banco de dados</li>
+        <li>$senha -> Senha de acesso do usuário do banco de dados</li>
+        <li>$database -> Nome da tabela que contem no banco de dados</li>
+    </ul>
+    <p>Por fim, devemos inseir a última variável, a <strong>$mysqli = new mysqli($host, $usuario, $senha, $database);</strong>. Esta variável que será responsável por fazer de fato a conexão. Agora, para testarmos se a conexão foi um <strong>sucesso</strong>, devemos fazer um pequeno sistema de verificação, sendo ele</p>
+    <code>
+        <span>if($mysqli->error) {</span>
+        <span>die("Falha ao conextar ao banco de dados: " . $mysqli->error);</span>
+    </code>
+    <p>Logo, temos um código assim no final:</p>
+    <code>
+     <span>?php </span>
+     <span>$host = 'localhost';</span>
+     <span>$usuario = 'root';</span>
+     <span>$senha = '';</span>
+     <span>$database ='cadastrologin';</span>
+     <span></span>
+     <span>$mysqli = new mysqli($host, $usuario, $senha, $database</span>);
+
+<span>if ($mysqli->error){</span>
+         <span>die("Conexão falhou com o banco de dados:" . $mysqli->error);</span>
+     <span>}</span>
+     <span>?></span>
+    </code>
+
+    <p>Para não termos que digitar todos esses comandos em cada página que criamos para conexão com banco de dados, podemos utilizar a mesma coisa que utilizamos para linkar o CSS nas páginas. Neste caso usaríamos <strong>include("conexão.php")</strong>. Neste caso, devemos inserir este <strong>include</strong> dentro do comando ?php (este ?php <strong>DEVE</strong> ficar antes do DOCTYPE) da página que desejamos linkar a conexão.</p>
 </body>
 </html>
