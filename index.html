@@ -218,6 +218,24 @@
      <span>?></span>
     </code>
 
-    <p>Para não termos que digitar todos esses comandos em cada página que criamos para conexão com banco de dados, podemos utilizar a mesma coisa que utilizamos para linkar o CSS nas páginas. Neste caso usaríamos <strong>include("conexão.php")</strong>. Neste caso, devemos inserir este <strong>include</strong> dentro do comando ?php (este ?php <strong>DEVE</strong> ficar antes do DOCTYPE) da página que desejamos linkar a conexão.</p>
+    <p>Para não termos que digitar todos esses comandos em cada página que criamos para conexão com banco de dados, podemos utilizar a mesma coisa que utilizamos para linkar o CSS nas páginas. Neste caso usaríamos <strong>include("conexão.php")</strong>. Depois, devemos inserir este <strong>include</strong> dentro do comando ?php (este ?php <strong>DEVE</strong> ficar antes do DOCTYPE) da página que desejamos linkar a conexão.</p>
+    <p>Agora, por fim, devemos fazer uma <strong>verificação</strong> se existe no banco de dados a variável email e senha. Para isso, inserimos após o include um <strong>sistema de if e else</strong> contendo <strong>Isset</strong>(significa "existir"). Neste sistema deve incluir um <strong>strlen</strong> para que que o valor da string não seja 0.</p>
+    <p>Um ponto muito importante seria inserir uma variável email e senha contendo o seguinte comado <strong>real_escape_string($_POST [''])</strong>. Isso fará com que o PHP limpe a string dentro do campo para que não ocorra um <strong>SQL Injection</strong></p>
+    <code>
+        <span>?php </span>
+<span>include('conexao.php');</span>
+ <span>if(isset($_POST ['email']) || isset($_POST['senha'])) {</span>
+<span></span>
+    <span>if(strlen($_POST['email'] == 0)){</span>
+        <span>echo "Preencha o e-mail";</span>
+    <span>} else if (strlen($_POST['senha']) == 0){</span>
+        <span>echo "Preencha sua senha";</span>
+    <span>} else {</span>
+        <span>$email = $mysqli -> real_escape_string($_POST['email']);</span>
+        <span>$senha = $mysqli -> real_escape_string($_POST['senha']);</span>
+    <span>}</span>
+ <span>}</span>
+<span>?></span>
+    </code>
 </body>
 </html>
