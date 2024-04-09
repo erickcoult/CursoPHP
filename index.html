@@ -197,10 +197,11 @@
         <li>$senha -> Senha de acesso do usuário do banco de dados</li>
         <li>$database -> Nome da tabela que contem no banco de dados</li>
     </ul>
-    <p>Por fim, devemos inseir a última variável, a <strong>$mysqli = new mysqli($host, $usuario, $senha, $database);</strong>. Esta variável que será responsável por fazer de fato a conexão. Agora, para testarmos se a conexão foi um <strong>sucesso</strong>, devemos fazer um pequeno sistema de verificação, sendo ele</p>
+    <p>Por fim, devemos inseir a última variável, a <strong>$mysqli = new mysqli($host, $usuario, $senha, $database);</strong>. Esta variável que será responsável por fazer de fato a conexão. Agora, para testarmos se a conexão foi um <strong>sucesso</strong>, devemos fazer um pequeno sistema de verificação.</p>
+    <p>Vale lembrar que o comando `new mysql` é usado para criar um novo objeto de conexão MySQLi em PHP. Ele é utilizado para estabelecer uma conexão com um banco de dados MySQL</p>
     <code>
         <span>if($mysqli->error) {</span>
-        <span>die("Falha ao conextar ao banco de dados: " . $mysqli->error);</span>
+        <span>die("Falha ao conextar ao banco de dados: " . $mysqli->error);}</span>
     </code>
     <p>Logo, temos um código assim no final:</p>
     <code>
@@ -237,5 +238,9 @@
  <span>}</span>
 <span>?></span>
     </code>
+
+    <h1>Validação de banco de dados</h1>
+    <p>Agora precisamos validar se o e-mail ou senha iseridos existem no nosso banco de dados. Para isso, primeiro vamos criar uma variável para selecionar todos os campos da tabela USUARIOS. Logo após, selecionamos essa variável para fazer uma consulta na tabela selecionada, utilizando o comando <strong>->query()</strong></p>
+    <p>O método <strong>->query()</strong> é usado para executar consultas SQL em um banco de dados MySQL usando o objeto de conexão MySQLi em PHP. Ele aceita como argumento uma string contendo a consulta SQL que você deseja executar.</p>
 </body>
 </html>
