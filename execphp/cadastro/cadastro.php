@@ -40,5 +40,13 @@ include('conexao.php');
         </p>
         <button type="submit">Entrar</button>
     </form>
+
+    <h1>Passo a passo pra criar cadastro</h1>
+    <ol>
+        <li>Criar conexão com a tabela Cadastro </li>
+        <li>Criar validação se existe os campos email e senha</li>
+        <li>Criar validação se os campos não estão vazios</li>
+        <li></li>
+    </ol>
 </body>
 </html>
