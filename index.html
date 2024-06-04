@@ -220,7 +220,7 @@
     </code>
 
     <p>Para não termos que digitar todos esses comandos em cada página que criamos para conexão com banco de dados, podemos utilizar a mesma coisa que utilizamos para linkar o CSS nas páginas. Neste caso usaríamos <strong>include("conexão.php")</strong>. Depois, devemos inserir este <strong>include</strong> dentro do comando ?php (este ?php <strong>DEVE</strong> ficar antes do DOCTYPE) da página que desejamos linkar a conexão.</p>
-    <p>Agora, por fim, devemos fazer uma <strong>verificação</strong> se existe no banco de dados a variável email e senha. Para isso, inserimos após o include um <strong>sistema de if e else</strong> contendo <strong>Isset</strong>(significa "existir"). Neste sistema deve incluir um <strong>strlen</strong> para que que o valor da string não seja 0.</p>
+    <p>Agora, por fim, devemos fazer uma <strong>verificação</strong> se existe no banco de dados a variável email e senha. Para isso, inserimos após o include um <strong>sistema de if e else</strong> contendo <strong>Isset</strong>(significa "existir"). Neste sistema deve-se incluir um <strong>strlen</strong>(strlen retorna o número de caracteres presentes na string) para que que o valor da string não seja 0, ou seja, não aceite um campo vazio.</p>
     <p>Um ponto muito importante seria inserir uma variável email e senha contendo o seguinte comado <strong>real_escape_string($_POST [''])</strong>. Isso fará com que o PHP limpe a string dentro do campo para que não ocorra um <strong>SQL Injection</strong></p>
     <code>
         <span>?php </span>
@@ -242,5 +242,45 @@
     <h1>Validação de banco de dados</h1>
     <p>Agora precisamos validar se o e-mail ou senha iseridos existem no nosso banco de dados. Para isso, primeiro vamos criar uma variável para selecionar todos os campos da tabela USUARIOS. Logo após, selecionamos essa variável para fazer uma consulta na tabela selecionada, utilizando o comando <strong>->query()</strong></p>
     <p>O método <strong>->query()</strong> é usado para executar consultas SQL em um banco de dados MySQL usando o objeto de conexão MySQLi em PHP. Ele aceita como argumento uma string contendo a consulta SQL que você deseja executar.</p>
+    <code>
+    <span>*String contendo a consulta SQL*</span>   
+    <span>$sql_code = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'"; </span>
+    <span>*Execução da string*</span>
+    <span>$sql_query = $mysqli ->query($sql_code) or die("Falha na execução do código" . $mysqli -> error); </span>
+    </code>
+    <p>Agora faremos uma validação de que, caso essa consulta seja verdadeira, ou seja, exista email <strong>E</strong> senha, a quantidade de registro será 1 (true) e jogamos os dados do id, email e senha dentro de uma variável com o ->fetch_assoc</p>
+    <code>
+        <span>$quantidade = $sql_query ->num_rows; </span>
+        <span></span>
+        <span>if($quantidade ==1) {</span>
+        <span>$usuario = $sql_query ->fetch_assoc(); </span>
+        <span>}</span>
+    </code>
+    <h2>Criando uma Sessão</h2>
+    <p>Para criarmos uma sessão de login é bem simples, basta especificarmos se, caso <strong>não</strong> exista uma sessão, criamos   uma <strong>session_start()</strong>. Após isso, inserimos o que será armazenado na sessão (ID, usuário, senha ou email)</p>
+    <code>
+        <span>if(!isset($_SESSION)) {</span>
+            <span>session_start();</span>
+        <span>}</span>
+<span></span>
+        <span>$_SESSION['id'] = $usuario['id'];</span>
+        <span>$_SESSION['nome'] = $usuario['nome'];</span>
+    </code>
+    <h2>Redirecionando a página e proibindo acesso</h2>
+    <p>Após criamos uma sessão e validar ela, jogamos o usuario para a página principal e iniciamos novamente uma sessão.</p>
+    <code>
+        <span>*Redirecionando o usuário para o painel</span>
+        <span>header("Location: paine.php")</span>
+        ******painel.php******
+        <span>?php</span>
+        <span>if(!isset($_SESSION)) {</span>
+            <span>session_start();</span>
+            <span>}</span>
+            <span>?</span>
+            <span>!Doctype html.........</span>
+            <span>Bem vindo ao painel, ?php echo $_SESSION['nome']; ?</span>
+    </code>
+    <p>Entretanto, podemos acessar o painel sem estar logado, o que seria algo que não poderia acontecer. Para que isso não seja possivel, devemos bloquear o acesso de quem não está logado</p>
+    <p>Para isso, vamos criar mais um arquivo onde redirecionaremos o usuário não logado</p>
 </body>
 </html>
