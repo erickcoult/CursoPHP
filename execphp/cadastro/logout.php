@@ -4,5 +4,5 @@ if(!isset ($_SESSION)) {
 }
 session_destroy();
 
-header("Location: cadastro.php");
+header("Location: login.php");
 ?>
