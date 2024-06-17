@@ -1,6 +1,5 @@
 <?php 
 include ('protectest.php');
-
 ?>
 
 
@@ -12,6 +11,7 @@ include ('protectest.php');
     <title>Página inicial</title>
 </head>
 <body>
+    <p>Bem vindo <?php echo $_SESSION['nome'];?></p>
     fazer <a href="logouteste.php">Logout</a>
 </body>
 </html>
